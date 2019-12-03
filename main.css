@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 12%;
+}
+
+button {
+    font-size: 30px;
+}
