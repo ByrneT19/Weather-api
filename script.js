@@ -60,7 +60,7 @@ function locResult() {
 }
 
 function weatherClick() {
-    $('#button').on('submit', function(e) {
+    $('.button').on('click', function(e) {
         e.preventDefault();
         console.log(e);
         getWeather;
@@ -68,7 +68,7 @@ function weatherClick() {
 }
 
 function locationClick() {
-    $('#locSub').on('submit', function(e) {
+    $('form').on('submit', function(e) {
         e.preventDefault();
         console.log(e);
         getLocation();
