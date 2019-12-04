@@ -63,7 +63,7 @@ function weatherClick() {
     $('.button').on('click', function(e) {
         e.preventDefault();
         console.log(e);
-        getWeather;
+        getWeather();
     })
 }
 
