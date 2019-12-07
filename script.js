@@ -1,41 +1,42 @@
 'use strict'
 
 //Weather API
-const apiKey ='2b66302e97ef0cc8c1f7bf359ac95715';
-const url = 'api.openweathermap.org/data/2.5/forecast?lat=35&lon=139';
-const safeKey = {headers: new Headers(
-        {"X-Api-Key": apiKey
-    })
-};
+const chez = $('#chez').val();
+const url = 'https://cors-anywhere.herokuapp.com/https://samples.openweathermap.org/data/2.5/weather?q='
+                + chez + '&appid=2b66302e97ef0cc8c1f7bf359ac95715';
+
 
 //Maps API
-const latLong = $('#locBut').val();
-//const apiLoc = '96d46d5ed9764000afb371a04ad3ef5b';
-const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latLong}&key=96d46d5ed9764000afb371a04ad3ef5b`;
-/*const locSafe = {headers: new Headers(
-        {"X-Api-Key": apiLoc
-    })
-};*/
+const city = $('#user-input').val();
+const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${city}&key=96d46d5ed9764000afb371a04ad3ef5b`;
 
 function getWeather() {
-    fetch(url, safeKey)
+    debugger;
+    fetch(url)
     .then(response => {
         if(!response.ok){
             throw new Error(response.statusText)
         }
-        return(response.json)
+        return response.json()
     })
     .then(responseJson => showResult(responseJson))
     .catch(err => {
         alert(err.message)
     })
-    console.log(responseJson);
+    
 }
 
-function showResult() {
-    $('#weather').append(`
-    
-    `)
+function showResult(responseJson) {
+    $('#chez').val("");
+    let result = " ";
+    let i = null;
+    for(i = 0; i < responseJson.data.length; i++) {
+        result += `<img>${responseJson.data.weather[i].icon}>
+                   <p>${Math.floor(responseJson.data.main[i].temp)}</p>
+                   <p>${responseJson.data.weather[i].main}</p>}`;
+                   console.log(responseJson.data.weather[i].main);
+    }
+    $('#weather').append(result);
 }
 
 function getLocation() {
@@ -60,7 +61,7 @@ function locResult() {
 }
 
 function weatherClick() {
-    $('.button').on('click', function(e) {
+    $('.weather-form').on('submit', function(e) {
         e.preventDefault();
         console.log(e);
         getWeather();
@@ -68,7 +69,7 @@ function weatherClick() {
 }
 
 function locationClick() {
-    $('form').on('submit', function(e) {
+    $('.location-form').on('submit', function(e) {
         e.preventDefault();
         console.log(e);
         getLocation();
