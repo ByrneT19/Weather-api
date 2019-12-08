@@ -26,8 +26,10 @@ function showResult(responseJson) {
                    <p>${Math.floor(responseJson.data.main[i].temp)}</p>
                    <p>${responseJson.data.weather[i].main}</p>}`;
                    console.log(responseJson.data.weather[i].main);
+                   console.log(responseJson)
     }
     $('#weather').append(result);
+    console.log(responseJson)
 }
 
 function getLocation(city) {
