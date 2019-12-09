@@ -50,8 +50,8 @@ function getLocation(wgs, country) {
 
 function locResult(results, _postcode, responseJson) {
     console.log(responseJson);
-    const CORDS = [`${results.geometry.lat}`,`${results.geometry.lng}`]
-    getWeather(CORDS)
+    const CORDS = [`${results.geometry.lat}`,`${results.geometry.lng}`];//use push method here with two let variables?
+    getWeather(CORDS);
 }
 
 /*function weatherClick() {
