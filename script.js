@@ -64,8 +64,6 @@ function locResult(results, _type, responseJson) { //Object.keys method?
     console.log(CORDS);
 }
 
-
-
 /*function weatherClick() {
     $('.weather-form').on('submit', function(e) {
         e.preventDefault();
