@@ -14,19 +14,44 @@ function getWeather(CORDS) {
     .catch(err => {
         alert(err.message)
     })
-    
+}
+
+function gpsLoc(latLong) {
+    console.log(latLong);
+    const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?unit=mph&key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
+    fetch(mapUrl)
+    .then(response => {
+        if(!response.ok) {
+            throw new Error(response.statusText)
+        }
+        return response.json()
+    })
+    .then(responseJson => showGps(responseJson))
+    .catch(err => {
+        alert(err.message)
+    })
 }
 
 function showResult(responseJson) {
     console.log(responseJson);
     let i = null;
-    for(let i = 0; i < responseJson.list[0].weather.length; i++) {
+    for(i = 0; i < responseJson.list[0].weather.length; i++) {
         $('#weather-container').append(`
         <!--img src=${responseJson.list[0].weather[0].icon}-->
         <p>${Math.floor(responseJson.list[0].main.temp)}&#8451 </p>
         <p>${responseJson.list[0].weather[0].main}</p>
         `)
     }
+}
+
+function showGps(responseJson) {
+    console.log(responseJson);
+    let i = null;
+    for(i = 0; i < responseJson.flowSegmentData.length; i++) {
+        $('.traffic-container').append(`
+        <p>${flowSegmentData.currentSpeed} mph</p>
+        `)
+    }  
 }
 
 function getLocation(wgs, country) {
