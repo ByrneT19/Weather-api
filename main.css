@@ -3,11 +3,98 @@
 }
 
 body {
+    background-image: url(images/traffic-app-back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+form {
+    color: black;
+    background-color: white;
+    opacity: 0.9;
+    width: 80%;
     text-align: center;
-    font-size: 30px;
-    margin-top: 12%;
+    margin: 0 auto;
+    font-size: 16px;
+    border-radius: 15px;
+    margin-top: 25px;
+    font-weight: 600;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#pays {
+    width: 25px;
 }
 
 button {
-    font-size: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 6px;
+    background-color: rgb(240, 211, 49);
+    border: none;
+    font-weight: 600;
+    padding: 4px;
+}
+
+#weather-container, .traffic-container {
+    color: black;
+    background-color: white;
+    opacity: 0.9;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* justify-content: center; */
+    font-size: 16px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    /* text-align: center; */
+}
+
+p {
+    margin: 0px;
+    text-align: center;
+}
+
+/*Desktop*/
+@media screen and (min-width: 1200px) {
+    form {
+        width: 60%;
+        font-size: 32px;
+    }
+
+    label, #user-input {
+        width: 60%;
+    }
+
+    button {
+        font-size: 32px;
+    }
+}
+
+/* Tablets */
+@media screen and (min-width: 600px) and (max-width: 1199px) {
+    form {
+        font-size: 25px;
+        width: 75%;
+    }
+
+    #pays {
+        width: 30px;
+    }
+
+    label, #user-input {
+        width: 60%;
+    }
+
+    button {
+        font-size: 25px;
+    }
 }

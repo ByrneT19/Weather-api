@@ -20,9 +20,10 @@ function gpsLoc(latLong) {
     })
 }
 
-function showGps() {
-    $('.tomtom').append(`
-    
+function showGps(flowSegmentData) {
+    console.log(flowSegmentData);
+    $('.traffic-container').append(`
+    <p>${flowSegmentData[0].coordinates.currentSpeed}mph</p>
     `)
 }
 

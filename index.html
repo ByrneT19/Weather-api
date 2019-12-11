@@ -4,38 +4,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css" type="text/css">
     <title>Document</title>
 </head>
 <body>
     <form>
-        <label for="pays">Enter your 2 letter country code here, i.e. UK, FR: </label>
+        <label for="pays">Country (2 letter code, i.e. UK, FR): </label>
         <input type="text" id="pays">
     </form>
-    <!--form class="weather-form">
-        <label for="chez">Enter city name here: </label>
-        <input type="text" id="chez">
-        <button class="button" type="submit">Click</button>
-    </form-->
+    
+    <form class="location-form">
+        <label for="user-input">Location (use detailed address for best results): </label>
+        <input type="text" id="user-input">
+        <button id="locSub" type="submit">Click</button>
+    </form>
     <div id="weather-container">
         
 
     </div>
-    <form class="location-form">
-        <label for="user-input">Enter your location, i.e. city, postal code: </label>
-        <input type="text" id="user-input">
-        <button id="locSub" type="submit">Click</button>
-    </form>
-    <div id="location">
-
-    </div>
-
-    <!--form class="tomtom-form">
-        <label for="gps">Enter lat/long: </label>
-        <input type="text" id="gps">
-        <button id="gpsBut" type="submit">Click</button>
-    </form-->
-    <div class="tomtom">
+    <div class="traffic-continer">
 
     </div>
     <script src="script.js"></script>

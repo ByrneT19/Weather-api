@@ -19,18 +19,13 @@ function getWeather(CORDS) {
 
 function showResult(responseJson) {
     console.log(responseJson);
-    $('#chez').val("");
     let i = null;
-    for(i = 0; i < responseJson.data.length; i++) {
-        $('#weather-container').append(
-            `<ul>
-                <li class="weatherResults">
-                    <img src=${responseJson.data.weather[i].icon}>
-                    <p>${Math.floor(responseJson.data.main[i].temp)}</p>
-                    <p>${responseJson.data.weather[i].main}</p>
-                </li>
-            </ul>`
-        )
+    for(let i = 0; i < responseJson.list[0].weather.length; i++) {
+        $('#weather-container').append(`
+        <!--img src=${responseJson.list[0].weather[0].icon}-->
+        <p>${Math.floor(responseJson.list[0].main.temp)}&#8451 </p>
+        <p>${responseJson.list[0].weather[0].main}</p>
+        `)
     }
 }
 
