@@ -5,7 +5,8 @@
 // const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
 
 function gpsLoc(latLong) {
-    const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
+    console.log(latLong);
+    const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?unit=mph&key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
     fetch(mapUrl)
     .then(response => {
         if(!response.ok) {
@@ -25,7 +26,7 @@ function showGps() {
     `)
 }
 
-function gpsWatch() {
+/*function gpsWatch() {
     $('.tomtom-form').on('submit', function(e) {
         e.preventDefault();
         console.log(e);
@@ -38,4 +39,4 @@ function runGps() {
     gpsWatch();
 }
 
-$(runGps)
+$(runGps)*/
