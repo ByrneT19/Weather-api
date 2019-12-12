@@ -35,11 +35,11 @@ form {
 button {
     font-size: 16px;
     border-radius: 5px;
-    margin: 6px;
     background-color: rgb(240, 211, 49);
     border: none;
     font-weight: 600;
     padding: 4px;
+    margin-top: 6px;
 }
 
 #weather-container, .traffic-container {
@@ -56,6 +56,10 @@ button {
     margin: 0 auto;
     margin-top: 25px;
     /* text-align: center; */
+}
+
+label {
+    padding: 6px;
 }
 
 p {

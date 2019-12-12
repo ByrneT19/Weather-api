@@ -1,7 +1,7 @@
 'use strict'
                 
 function getWeather(CORDS) {
-    console.log(CORDS);
+    console.log('from getWeather', CORDS);
     const url = `https://api.openweathermap.org/data/2.5/find?lat=${CORDS[0]}&lon=${CORDS[1]}&units=metric&appid=2b66302e97ef0cc8c1f7bf359ac95715`;
     fetch(url)
     .then(response => {
@@ -17,7 +17,7 @@ function getWeather(CORDS) {
 }
 
 function gpsLoc(latLong) {
-    console.log(latLong);
+    console.log('from gpsLoc', latLong);
     const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?unit=mph&key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
     fetch(mapUrl)
     .then(response => {
@@ -33,7 +33,7 @@ function gpsLoc(latLong) {
 }
 
 function showResult(responseJson) {
-    console.log(responseJson);
+    console.log('from showResult', responseJson);
     let i = null;
     for(i = 0; i < responseJson.list[0].weather.length; i++) {
         $('#weather-container').append(`
@@ -45,11 +45,11 @@ function showResult(responseJson) {
 }
 
 function showGps(responseJson) {
-    console.log(responseJson);
+    console.log('from showGps', responseJson);
     let i = null;
-    for(i = 0; i < responseJson.flowSegmentData.length; i++) {
+    for(i = 0; i < responseJson.flowSegmentData[0].length; i++) {
         $('.traffic-container').append(`
-        <p>${flowSegmentData.currentSpeed} mph</p>
+        <p>${responseJson.flowSegmentData[0].currentSpeed} mph</p>
         `)
     }  
 }
@@ -70,7 +70,8 @@ function getLocation(wgs, country) {
 }
 
 function locResult(responseJson, results) {
-    console.log(results);
+    console.log('from locResult', results);
+    console.log('from locResult', responseJson);
     const CORDS = [responseJson.results[0].geometry.lat, responseJson.results[0].geometry.lng];
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
     getWeather(CORDS);
