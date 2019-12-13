@@ -34,6 +34,7 @@ function gpsLoc(latLong) {
 
 function showResult(responseJson) {
     console.log('from showResult', responseJson);
+    $('#weather-container').empty();
     let i = null;
     for(i = 0; i < responseJson.list[0].weather.length; i++) {
         $('#weather-container').append(`
@@ -46,6 +47,7 @@ function showResult(responseJson) {
 
 function showGps(responseJson) {
     console.log('from showGps', responseJson);
+    $('.traffic-container').empty();
     let i = null;
     for(i = 0; i < responseJson.flowSegmentData[0].length; i++) {
         $('.traffic-container').append(`
@@ -69,8 +71,8 @@ function getLocation(wgs, country) {
     })
 }
 
-function locResult(responseJson, results) {
-    console.log('from locResult', results);
+function locResult(responseJson) {
+    // console.log('from locResult', results);
     console.log('from locResult', responseJson);
     const CORDS = [responseJson.results[0].geometry.lat, responseJson.results[0].geometry.lng];
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
