@@ -12,7 +12,7 @@ function getWeather(CORDS) {
     })
     .then(responseJson => showResult(responseJson))
     .catch(err => {
-        alert(err.message)
+        alert(err.message + 'help message')
     })
 }
 
