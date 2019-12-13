@@ -43,12 +43,12 @@ function showResult(responseJson) {
     for(i = 0; i < responseJson.list[0].weather.length; i++) {
         $('#weather-container').append(`
         <h2>Weather at Location</h2>
+        <h3>${responseJson.list[0].weather[0].main}</h3>        
         <div id="icon">
             <img id="yunHua" src="${iconUrl}" alt="Weather icon">
         </div>
         <p>Current temperature: ${Math.floor(responseJson.list[0].main.temp)}&#8451</p>
-        <p>Feels like: ${responseJson.list[0].main.feels_like}&#8451</p>
-        <h3>${responseJson.list[0].weather[0].main}</h3>
+        <p>Feels like: ${Math.floor(responseJson.list[0].main.feels_like)}&#8451</p>
         <p>${responseJson.list[0].weather[0].description}</p>
         `)
     }
@@ -58,14 +58,19 @@ function showGps(responseJson) {
     console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
+    let kpmh = Math.round(responseJson.flowSegmentData.currentSpeed * 1.6);
+    let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
+    <p>Average Speed: ${kpmh} km/h</p>
+    <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
+    <p>Speed in Ideal Conditions: ${ikm} km/h;
     `)
 }
 
 function getLocation(wgs, country) {
-    const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&key=96d46d5ed9764000afb371a04ad3ef5b&pretty=1`;
+    const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&roadinfo=1&key=96d46d5ed9764000afb371a04ad3ef5b&pretty=1`;
     fetch(locUrl) 
     .then(response => {
         if(!response.ok) {
