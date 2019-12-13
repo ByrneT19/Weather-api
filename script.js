@@ -35,25 +35,30 @@ function gpsLoc(latLong) {
 function showResult(responseJson) {
     console.log('from showResult', responseJson);
     $('#weather-container').empty();
+    $('#weather-container').show();
+    let weatherIcon = responseJson.list[0].weather[0].icon;
+    console.log('weather icon is', weatherIcon);
+    let iconUrl = `http://openweathermap.org/img/w/${weatherIcon}.png`;
     let i = null;
     for(i = 0; i < responseJson.list[0].weather.length; i++) {
         $('#weather-container').append(`
-        <!--img src=${responseJson.list[0].weather[0].icon}-->
-        <p>${Math.floor(responseJson.list[0].main.temp)}&#8451 </p>
+        <h2>Weather at Location</h2>
+        <div id="icon">
+            <img id="yunHua" src="${iconUrl}" alt="Weather icon">
+        </div>
+        <p>${Math.floor(responseJson.list[0].main.temp)}&#8451</p>
         <p>${responseJson.list[0].weather[0].main}</p>
         `)
     }
 }
 
 function showGps(responseJson) {
-    console.log('from showGps', responseJson);
     $('.traffic-container').empty();
-    let i = null;
-    for(i = 0; i < responseJson.flowSegmentData[0].length; i++) {
-        $('.traffic-container').append(`
-        <p>${responseJson.flowSegmentData[0].currentSpeed} mph</p>
-        `)
-    }  
+    $('.traffic-container').show();
+    $('.traffic-container').append(`
+    <h2>Traffic Information at Location</h2>
+    <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
+    `)
 }
 
 function getLocation(wgs, country) {

@@ -22,10 +22,10 @@ form {
     margin-top: 25px;
     font-weight: 600;
     padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    /* display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;     */
 }
 
 #pays {
@@ -34,7 +34,7 @@ form {
 
 button {
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: rgb(240, 211, 49);
     border: none;
     font-weight: 600;
@@ -47,31 +47,42 @@ button {
     background-color: white;
     opacity: 0.9;
     border-radius: 15px;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: flex-start; */
     font-size: 16px;
     width: 80%;
     margin: 0 auto;
     margin-top: 25px;
+    display: none;
 }
 
 label {
     padding: 6px;
 }
 
+#icon {
+    margin: 0 auto;
+}
+
 p {
     margin: 0px;
-    text-align: center;
     font-weight: 500;
+    text-align: center;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 2px;
+    text-align: center;
 }
 
 /*Desktop*/
 @media screen and (min-width: 1200px) {
     form {
         width: 60%;
-        font-size: 32px;
+        font-size: 28px;
     }
 
     label, #user-input {
@@ -79,7 +90,8 @@ p {
     }
 
     button {
-        font-size: 32px;
+        font-size: 28px;
+        width: 12%;
     }
 
     #pays {
@@ -87,17 +99,29 @@ p {
     }
 
     input {
-        font-size: 32px;
+        font-size: 28px;
         padding: 4px;
     }
 
     #weather-container, .traffic-container {
-        width: 60%;
+        width: 28%;
+        min-height: 300px;
+        max-height: 700px;
+    }
+
+    #weather-container {
+        float: left;
+        margin-left: 20%;
+    }
+
+    .traffic-container {
+        float: right;
+        margin-right: 20%;
     }
 
     p {
-        font-size: 32px;
-        font-weight: 500;
+        font-size: 24px;
+        font-weight: 600;
     }
 }
 
