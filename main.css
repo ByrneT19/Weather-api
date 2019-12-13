@@ -11,8 +11,8 @@ body {
 }
 
 form {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: rgb(43, 157, 214);
     opacity: 0.9;
     width: 80%;
     text-align: center;
@@ -22,10 +22,6 @@ form {
     margin-top: 25px;
     font-weight: 600;
     padding: 8px;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;     */
 }
 
 #pays {
@@ -43,14 +39,10 @@ button {
 }
 
 #weather-container, .traffic-container {
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: rgb(43, 157, 214);
     opacity: 0.9;
     border-radius: 15px;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; */
     font-size: 16px;
     width: 80%;
     margin: 0 auto;
