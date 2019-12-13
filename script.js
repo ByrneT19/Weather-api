@@ -46,13 +46,16 @@ function showResult(responseJson) {
         <div id="icon">
             <img id="yunHua" src="${iconUrl}" alt="Weather icon">
         </div>
-        <p>${Math.floor(responseJson.list[0].main.temp)}&#8451</p>
-        <p>${responseJson.list[0].weather[0].main}</p>
+        <p>Current temperature: ${Math.floor(responseJson.list[0].main.temp)}&#8451</p>
+        <p>Feels like: ${responseJson.list[0].main.feels_like}&#8451</p>
+        <h3>${responseJson.list[0].weather[0].main}</h3>
+        <p>${responseJson.list[0].weather[0].description}</p>
         `)
     }
 }
 
 function showGps(responseJson) {
+    console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
     $('.traffic-container').append(`

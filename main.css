@@ -55,7 +55,7 @@ label {
 }
 
 #icon {
-    margin: 0 auto;
+    text-align: center;
 }
 
 p {
@@ -65,6 +65,12 @@ p {
 }
 
 h2 {
+    font-size: 18px;
+    margin-top: 2px;
+    text-align: center;
+}
+
+h3 {
     font-size: 18px;
     margin-top: 2px;
     text-align: center;
@@ -95,6 +101,14 @@ h2 {
         padding: 4px;
     }
 
+    h2 {
+        font-size: 32px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
     #weather-container, .traffic-container {
         width: 28%;
         min-height: 300px;
@@ -114,6 +128,11 @@ h2 {
     p {
         font-size: 24px;
         font-weight: 600;
+    }
+
+    #yunHua {
+        width: 90px;
+        height: 90px;
     }
 }
 
@@ -140,8 +159,21 @@ h2 {
         width: 75%;
     }
 
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 28px;
+    }
+
     p {
         font-size: 25px;
         font-weight: 500;
+    }
+
+    #yunHua {
+        width: 90px;
+        height: 90px;
     }
 }
