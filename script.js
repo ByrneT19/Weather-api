@@ -12,7 +12,7 @@ function getWeather(CORDS) {
     })
     .then(responseJson => showResult(responseJson))
     .catch(err => {
-        alert(err.message + 'help message')
+        alert(err.message)
     })
 }
 
@@ -22,7 +22,8 @@ function gpsLoc(latLong) {
     fetch(mapUrl)
     .then(response => {
         if(!response.ok) {
-            throw new Error(response.statusText)
+            throw new Error('Sorry no traffic data was found. Please refine your search. Try formatting it by town,' + 
+            'street and postcode')
         }
         return response.json()
     })
