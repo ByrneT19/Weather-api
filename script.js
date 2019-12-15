@@ -56,7 +56,7 @@ function showResult(responseJson) {
     }
 }
 
-function showGps(responseJson, latLong) {
+function showGps(responseJson, latLong, frc, key) {
     console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
@@ -64,8 +64,8 @@ function showGps(responseJson, latLong) {
     let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
-    <h3>Latitude and Longitude: ${latLong}</h3>
-    <p>${responseJson.flowSegmentData.frc()}</p>
+    <!--h3>Latitude and Longitude: ${latLong}</h3-->
+    <p>${responseJson.flowSegmentData.frc(frc[key])}</p>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
@@ -103,8 +103,9 @@ function locResult(responseJson) {
 }
 
 function renderToggle() {
-    $('form').on('keydown', 'mousedown', function() {
-        $('#weather-container', '.traffic-container').hide();
+    $('location-form').on('keydown', 'mousedown', function() {
+        $('#weather-container').hide();
+        $('.traffic-container').hide();
     })
 }
 
@@ -122,6 +123,7 @@ function locationClick() {
 function run() {
     locationClick();
     natList();
+    renderToggle();
 }
 
 $(run);
