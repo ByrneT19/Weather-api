@@ -9,12 +9,12 @@
     <title>Traffic API</title>
 </head>
 <body>
-    <form>
-        <label for="pays">Country (2 letter code, i.e. UK, FR): </label>
-        <input type="text" id="pays">
-    </form>
-    
+    <h1>Enter a location to see the traffic and weather conditions for the nearest road to your point of interest</h1>    
     <form class="location-form">
+        <label for="pays">Country </label>
+        <input list="pays" name="nation">
+        <datalist class="drop" type="text" id="pays">
+        </datalist><br>
         <label for="user-input">Location (use detailed address for best results): </label>
         <input type="text" id="user-input">
         <button id="locSub" type="submit">Submit</button>
@@ -27,5 +27,6 @@
 
     </div>
     <script src="script.js"></script>
+    <script src="ISO-list.js"></script>
 </body>
 </html>

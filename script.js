@@ -55,7 +55,7 @@ function showResult(responseJson) {
     }
 }
 
-function showGps(responseJson) {
+function showGps(responseJson, sub) {
     console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
@@ -63,21 +63,22 @@ function showGps(responseJson) {
     let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
+    <h3>${sub}</h3>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
     <p>Speed in Ideal Conditions: ${ikm} km/h;
     `)
-}
+} 
 
 function getLocation(wgs, country) {
     const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&roadinfo=1&key=96d46d5ed9764000afb371a04ad3ef5b&pretty=1`;
     fetch(locUrl) 
     .then(response => {
         if(!response.ok) {
-            throw new Error(response.statusText)
+            throw new Error('Sorry no matches - please specify a location')
         }
-        return response.json()
+        return response.json('aaaaaaa')
     })
     .then(responseJson => locResult(responseJson))
     .catch(err => {
@@ -86,12 +87,14 @@ function getLocation(wgs, country) {
 }
 
 function locResult(responseJson) {
-    // console.log('from locResult', results);
     console.log('from locResult', responseJson);
     const CORDS = [responseJson.results[0].geometry.lat, responseJson.results[0].geometry.lng];
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
+    let sub = `${responseJson.results[0].components.suburb}`;
+    console.log(sub);
     getWeather(CORDS);
     gpsLoc(latLong);
+    showGps(sub);
 }
 
 function locationClick() {
@@ -107,12 +110,8 @@ function locationClick() {
 
 function run() {
     locationClick();
+    natList();
 }
 
 $(run);
 
-// let wgs = [];
-// $('wgs').push($('#user-input')).split(',');
-// const chez = $('#chez').val().split(',')
-
-//it should be responseJson.results.filter( x => x.components._type === postcodde)
