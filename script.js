@@ -27,7 +27,7 @@ function gpsLoc(latLong) {
         }
         return response.json()
     })
-    .then(responseJson => showGps(responseJson))
+    .then(responseJson => showGps(responseJson, latLong))
     .catch(err => {
         alert(err.message)
     })
@@ -63,7 +63,7 @@ function showGps(responseJson, latLong) {
     let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
-    <h3>${latLong}</h3>
+    <h3>Latitude and Longitude: ${latLong}</h3>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
@@ -75,12 +75,17 @@ function getLocation(wgs, country) {
     const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&roadinfo=1&key=96d46d5ed9764000afb371a04ad3ef5b&pretty=1`;
     fetch(locUrl) 
     .then(response => {
-        if(!response.ok) {
+        if(!response.ok ) {
             throw new Error('Sorry no matches - please specify a location')
         }
-        return response.json('aaaaaaa')
+        return response.json()
     })
-    .then(responseJson => locResult(responseJson))
+    .then(responseJson => {
+        if(responseJson.results.length === 0)
+        {throw new Error('Sorry your search result was a little vague. Please refine your search, try using the city,' +
+        'district (and/or street) and postal code')} 
+        locResult(responseJson)
+    })
     .catch(err => {
         alert(err.message)
     })
@@ -92,7 +97,6 @@ function locResult(responseJson) {
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
     getWeather(CORDS);
     gpsLoc(latLong);
-    showGps(responseJson, latLong);
 }
 
 function locationClick() {
