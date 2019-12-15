@@ -23,7 +23,8 @@ function gpsLoc(latLong) {
     .then(response => {
         if(!response.ok) {
             throw new Error('Sorry no traffic data was found. Please refine your search. Try formatting it by town,' + 
-            'street and postcode')
+            'street and postcode.' +
+            'It is also possible that this service is not available in your requested region or that you are requesting a point too far away from a recognised road segment.')
         }
         return response.json()
     })
@@ -64,6 +65,7 @@ function showGps(responseJson, latLong) {
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
     <h3>Latitude and Longitude: ${latLong}</h3>
+    <p>${responseJson.flowSegmentData.frc()}</p>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
@@ -81,6 +83,7 @@ function getLocation(wgs, country) {
         return response.json()
     })
     .then(responseJson => {
+        console.log('JSON for getLocation - gives lat/long', responseJson)
         if(responseJson.results.length === 0)
         {throw new Error('Sorry your search result was a little vague. Please refine your search, try using the city,' +
         'district (and/or street) and postal code')} 
@@ -97,6 +100,12 @@ function locResult(responseJson) {
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
     getWeather(CORDS);
     gpsLoc(latLong);
+}
+
+function renderToggle() {
+    $('form').on('keydown', 'mousedown', function() {
+        $('#weather-container', '.traffic-container').hide();
+    })
 }
 
 function locationClick() {

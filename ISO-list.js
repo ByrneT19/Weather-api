@@ -251,3 +251,13 @@ function natList() {
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabwe</option>`)
 }
+
+function frc() { return {
+FRC0: 'Motorway, freeway or other major road',
+FRC1: 'Major road, less important than a motorway',
+FRC2: 'Other major road',
+FRC3: 'Secondary road',
+FRC4: 'Local connecting road',
+FRC5: 'Local road of high importance',
+FRC6: 'Local road'}
+}
