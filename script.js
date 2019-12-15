@@ -55,7 +55,7 @@ function showResult(responseJson) {
     }
 }
 
-function showGps(responseJson, sub) {
+function showGps(responseJson, latLong) {
     console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
@@ -63,7 +63,7 @@ function showGps(responseJson, sub) {
     let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
-    <h3>${sub}</h3>
+    <h3>${latLong}</h3>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
@@ -90,11 +90,9 @@ function locResult(responseJson) {
     console.log('from locResult', responseJson);
     const CORDS = [responseJson.results[0].geometry.lat, responseJson.results[0].geometry.lng];
     const latLong = `${responseJson.results[0].geometry.lat},${responseJson.results[0].geometry.lng}`;
-    let sub = `${responseJson.results[0].components.suburb}`;
-    console.log(sub);
     getWeather(CORDS);
     gpsLoc(latLong);
-    showGps(sub);
+    showGps(responseJson, latLong);
 }
 
 function locationClick() {
