@@ -1,6 +1,6 @@
 # Traffic and Weather API
 
-https://byrnet19.github.io/traffic-api/
+https://byrnet19.github.io/trafficInfo/
 
 
 
