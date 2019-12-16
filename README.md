@@ -2,7 +2,11 @@
 
 https://byrnet19.github.io/traffic-api/
 
-![image](https://user-images.githubusercontent.com/51822198/70850912-58f39c80-1e87-11ea-9d10-a8bc89c23473.png)
+
+
+![image](https://user-images.githubusercontent.com/51822198/70877355-057f6c80-1fb5-11ea-9082-9d9c8dbf626c.png)
+
+
 
 An app that gives users real-time weather and traffic data for specified locations.
 Users are able to enter specific points of interest to them and receive current weather and traffic data for that
