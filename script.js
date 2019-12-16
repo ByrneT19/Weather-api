@@ -22,13 +22,13 @@ function gpsLoc(latLong) {
     fetch(mapUrl)
     .then(response => {
         if(!response.ok) {
-            throw new Error('Sorry no traffic data was found. Please refine your search. Try formatting it by town,' + 
+            throw new Error('Sorry no traffic data was found - your browser may be out of date. Please refine your search. Try formatting it by town,' + 
             'street and postcode.' +
             'It is also possible that this service is not available in your requested region or that you are requesting a point too far away from a recognised road segment.')
         }
         return response.json()
     })
-    .then(responseJson => showGps(responseJson, latLong))
+    .then(responseJson => showGps(responseJson, latLong, roadsByCode))
     .catch(err => {
         alert(err.message)
     })
@@ -56,7 +56,7 @@ function showResult(responseJson) {
     }
 }
 
-function showGps(responseJson, latLong, frc, key) {
+function showGps(responseJson, latLong, roadsByCode) {
     console.log('from showGps', responseJson);
     $('.traffic-container').empty();
     $('.traffic-container').show();
@@ -65,7 +65,7 @@ function showGps(responseJson, latLong, frc, key) {
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
     <!--h3>Latitude and Longitude: ${latLong}</h3-->
-    <p>${responseJson.flowSegmentData.frc(frc[key])}</p>
+    <h3>${roadsByCode[responseJson.flowSegmentData.frc]}</h3>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
@@ -103,9 +103,13 @@ function locResult(responseJson) {
 }
 
 function renderToggle() {
-    $('location-form').on('keydown', 'mousedown', function() {
+    $('.location-form').mousedown(function() {
         $('#weather-container').hide();
         $('.traffic-container').hide();
+        $('.location-form').keydown(function() {
+            $('#weather-container').hide();
+            $('.traffic-container').hide();
+        })
     })
 }
 
