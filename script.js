@@ -68,7 +68,7 @@ function showGps(responseJson, roadsByCode) {
     let ikm = Math.round(responseJson.flowSegmentData.freeFlowSpeed * 1.6);
     $('.traffic-container').append(`
     <h2>Traffic Information at Location</h2>
-    <h3>${roadsByCode[responseJson.flowSegmentData.frc]}</h3>
+    <h3>Road type at location: ${roadsByCode[responseJson.flowSegmentData.frc]}</h3>
     <p>Average Speed: ${responseJson.flowSegmentData.currentSpeed} mph</p>
     <p>Average Speed: ${kpmh} km/h</p>
     <p>Speed in Ideal Conditions: ${responseJson.flowSegmentData.freeFlowSpeed} mph</p>
