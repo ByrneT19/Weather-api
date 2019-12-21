@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     background-color: black;
     font-family: 'Noto Sans', sans-serif;
+    background-image: 100vh;
 }
 
 h1 {
