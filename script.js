@@ -89,15 +89,25 @@ function getLocation(wgs, country) {
     .then(responseJson => {
         console.log('JSON for getLocation - gives lat/long', responseJson)
         if(responseJson.results.length === 0)
-            {throw new Error($('.errorResult').append(`<h4>Sorry your search result was a little vague. Please refine your search, try using the city,` +
-        `district (and/or street) and postal code</h4>`)
-        )} 
+            {throw 'vague'} 
             locResult(responseJson)
         })
+    // .catch(err => {
+    //     alert(err.message);
+    // })
     .catch(err => {
-        alert(err.message);
-    })
+    if (err == 'vague') {
+    $('.errorResult').append(`<h4>Sorry your search result was a little vague. Please refine your search, try using the city,` +
+    `district (and/or street) and postal code</h4>`)
+     }
+})
 }
+
+
+
+// new Error($('.errorResult').append(`<h4>Sorry your search result was a little vague. Please refine your search, try using the city,` +
+//         `district (and/or street) and postal code</h4>`)
+//         )
 
 //Function that creates the latitude and longitude used by the weather and traffic APIs
 function locResult(responseJson) {
