@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100vh;
+}
+
 body {
     background-image: url(images/traffic-app-back.jpg);
     background-size: cover;
