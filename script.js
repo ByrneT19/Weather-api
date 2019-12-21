@@ -114,10 +114,10 @@ function renderToggle() {
     $('.location-form').mousedown(function() {
         $('#weather-container').hide();
         $('.traffic-container').hide();
-        $('.location-form').keydown(function() {
-            $('#weather-container').hide();
-            $('.traffic-container').hide();
-        })
+        // $('.location-form').keydown(function() {
+        //     $('#weather-container').hide();
+        //     $('.traffic-container').hide();
+        // })
     })
 }
 
@@ -142,4 +142,3 @@ function run() {
 
 $(run);
 
-throw new Error($('.errorResult').append('soem stuff'))
