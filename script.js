@@ -89,13 +89,13 @@ function getLocation(wgs, country) {
     .then(responseJson => {
         console.log('JSON for getLocation - gives lat/long', responseJson)
         if(responseJson.results.length === 0)
-            {throw new Error('Sorry your search result was a little vague. Please refine your search, try using the city,' +
-        'district (and/or street) and postal code'
+            {throw new Error($('.errorResult').append('Sorry your search result was a little vague. Please refine your search, try using the city,' +
+        'district (and/or street) and postal code')
         )} 
             locResult(responseJson)
         })
     .catch(err => {
-        alert(err.message)
+        alert(err.message);
     })
 }
 
@@ -142,3 +142,4 @@ function run() {
 
 $(run);
 
+throw new Error($('.errorResult').append('soem stuff'))
