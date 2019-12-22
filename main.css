@@ -2,12 +2,13 @@
     box-sizing: border-box;
 }
 
+
 html {
-    background-image: url(images/traffic-app-back.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(images/traffic-app-back.jpg);
     background-color: black;
-    background-image: 100vh; 
+    height: 100vh; 
 }
 
 body {
