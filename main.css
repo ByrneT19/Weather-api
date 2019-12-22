@@ -8,15 +8,11 @@ html {
 
 body {
     font-family: 'Noto Sans', sans-serif;
-    background-color: black;    
-}
-
-main {
     background-image: url(images/traffic-app-back.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
-    background-image: 100vh;
+    background-image: 100vh;   
 }
 
 h1 {
