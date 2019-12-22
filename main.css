@@ -7,11 +7,15 @@ html {
 }
 
 body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: black;    
+}
+
+main {
     background-image: url(images/traffic-app-back.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
-    font-family: 'Noto Sans', sans-serif;
     background-image: 100vh;
 }
 
@@ -51,6 +55,29 @@ button {
     font-weight: 600;
     padding: 4px;
     margin-top: 6px;
+}
+
+.messageContainer {
+    color: white;
+    background-color: rgb(43, 157, 214);
+    opacity: 0.9;
+    border-radius: 15px;
+    font-size: 17px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.confirm {
+    display: none;
+    background-color: rgb(240, 211, 49);
+    color: black;
+    font-size: 18px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
 }
 
 #weather-container, .traffic-container {
@@ -142,6 +169,17 @@ input {
         font-size: 32px;
     }
 
+    .confirm {
+        font-size: 32px;
+        width: 60%;
+    }
+
+    .messageContainer {
+        font-size: 29px;
+        width: 60%;
+    }
+    
+
     #weather-container, .traffic-container {
         width: 28%;
         min-height: 300px;
@@ -186,6 +224,16 @@ input {
 
     button {
         font-size: 25px;
+    }
+
+    .confirm {
+        font-size: 29px;
+        width: 75%;
+    }
+
+    .messageContainer {
+        font-size: 27px;
+        width: 75%;
     }
 
     #weather-container, .traffic-container {

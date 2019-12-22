@@ -12,6 +12,7 @@
     
 </head>
 <body>
+<main>
     <h1>Enter a location to see the weather and traffic conditions for the nearest road to your point of interest</h1>    
     <form class="location-form">
         <label for="guo">Country </label>
@@ -22,15 +23,23 @@
         <input type="text" id="user-input">
         <button id="locSub" type="submit">Submit</button>
     </form>
-    <div id="weather-container">
+
+    <div class="messageContainer">
         <section class="errorResult">
 
         </section>
+    </div>
+
+    <h2 class="confirm"></h2>
+
+    <div id="weather-container">
+        
 
     </div>
     <div class="traffic-container">
 
     </div>
+</main>
     <script src="script.js"></script>
     <script src="ISO-list.js"></script>
 </body>
