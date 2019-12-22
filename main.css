@@ -3,16 +3,15 @@
 }
 
 html {
-    height: 100vh;
-}
-
-body {
-    font-family: 'Noto Sans', sans-serif;
     background-image: url(images/traffic-app-back.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-color: black;
-    background-image: 100vh;   
+    background-image: 100vh; 
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;      
 }
 
 h1 {
