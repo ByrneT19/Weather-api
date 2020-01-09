@@ -12,7 +12,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-image: url(images/traffic-app-back.jpg); 
-    height: 100%;      
+    height: 100vh;      
     margin: 0;
     padding: 25px;
 }
