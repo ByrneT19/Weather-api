@@ -3,7 +3,7 @@
 //Fetch function to get weather results based on latitude and longitude
 function getWeather(CORDS) {
     console.log('from getWeather', CORDS);
-    const url = `https://api.openweathermap.org/data/2.5/find?lat=${CORDS[0]}&lon=${CORDS[1]}&units=metric&appid=2b66302e97ef0cc8c1f7bf359ac95715`;
+    const url = `https://api.openweathermap.org/data/2.5/find?lat=${CORDS[0]}&lon=${CORDS[1]}&units=metric&appid={INSERT YOUR API KEY HERE}`;
     fetch(url)
     .then(response => {
         if(!response.ok){
@@ -20,7 +20,7 @@ function getWeather(CORDS) {
 //Fetch function that retrieves traffic data for the nearest road to the users latitude and longitude
 function gpsLoc(latLong) {
     console.log('from gpsLoc', latLong);
-    const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?unit=mph&key=nDSF3MMaZSDTFvy4ilNGaYg0VvzAnt5L&point=${latLong}`;
+    const mapUrl = `https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?unit=mph&key={INSERT YOUR API KEY HERE}&point=${latLong}`;
     fetch(mapUrl)
     .then(response => {
         if(!response.ok) {
@@ -80,7 +80,7 @@ function showGps(responseJson, roadsByCode) {
 
 //Fetch request which forward geocodes the users form inputs into latitude and longitude
 function getLocation(wgs, country) {
-    const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&roadinfo=1&key=96d46d5ed9764000afb371a04ad3ef5b&pretty=1`;
+    const locUrl = `https://api.opencagedata.com/geocode/v1/json?q=${wgs},${country}&min_confidence=8&roadinfo=1&key={INSERT YOUR API KEY HERE}&pretty=1`;
     fetch(locUrl) 
     .then(response => {
         if(!response.ok ) {
